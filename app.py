@@ -11,6 +11,10 @@ CSV_PATH = DATA_DIR / "player_stats.csv"
 
 
 def load_raw_data() -> pd.DataFrame:
+    if not CSV_PATH.exists():
+        raise FileNotFoundError(
+            f"Missing data file at {CSV_PATH}. Ensure data/player_stats.csv exists."
+        )
     df = pd.read_csv(CSV_PATH)
     df.columns = [col.strip().lower() for col in df.columns]
     numeric_cols = [
@@ -97,7 +101,16 @@ def most_efficient(df: pd.DataFrame) -> pd.DataFrame:
 
 
 st.set_page_config(page_title="NBA Player Performance Dashboard", layout="wide")
-ensure_database()
+try:
+    ensure_database()
+except FileNotFoundError as exc:
+    st.error(str(exc))
+    st.info(
+        "If you cloned the repo, make sure the data/ folder exists and includes "
+        "player_stats.csv. You can also open the CSV in Excel to verify it downloaded "
+        "correctly."
+    )
+    st.stop()
 
 st.title("NBA Player Performance Analytics Dashboard")
 

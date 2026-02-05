@@ -4,6 +4,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import streamlit as st
+st.write("NEW VERSION LOADED ✅")
+
 
 # -------------------- Page Config --------------------
 st.set_page_config(

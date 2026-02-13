@@ -81,5 +81,5 @@ A “patterns” page using correlation:
 
 ## Data source
 
-This app expects a CSV file at:
+This app expects a CSV file.
 

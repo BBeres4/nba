@@ -13,7 +13,7 @@ DATA_DIR = ROOT_DIR / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# Seasons like "2023-24"
+# Seasons 
 SEASONS = ["2019-20", "2020-21", "2021-22", "2022-23", "2023-24"]
 
 
@@ -50,7 +50,6 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         }
     )
 
-    # Some endpoints don't return position; we set a placeholder
     if "position" not in df.columns:
         df["position"] = "UNK"
 
@@ -77,7 +76,6 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     keep = [c for c in keep if c in df.columns]
     df = df[keep].copy()
 
-    # Enforce types
     numeric_cols = [
         "games",
         "minutes",

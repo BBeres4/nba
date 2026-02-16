@@ -4,7 +4,7 @@ A beginner-friendly Streamlit dashboard that lets you explore NBA player perform
 
 ---
 
-## What this app does (in plain English)
+## What this app does
 
 This project takes NBA player data and helps you answer questions like:
 
